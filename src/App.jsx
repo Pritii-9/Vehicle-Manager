@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import MenuItem from "./components/MenuItem";
-import Card from "./components/Card";
+import MenuItem from "./Components/MenuItem";
+import Card from "./Components/Card";
 
 const App = () => {
   const [selectedMenu, setSelectedMenu] = useState(null);
@@ -64,8 +64,8 @@ const App = () => {
 
   return (
     <div className="flex h-screen">
-      <aside className="w-1/4 bg-gray-800 text-white p-4 h-screen flex-shrink-0">
-        <h2 className="text-lg font-bold">Sidebar</h2>
+      <aside className="w-1/4 bg-white text-black-800 p-4 h-screen flex-shrink-0">
+        <h2 className="text-lg font-bold">Home</h2>
         <ul>
           <MenuItem label="Menu item 1" onClick={() => setSelectedMenu("menu1")} />
           <MenuItem label="Menu item 2" onClick={() => setSelectedMenu("menu2")} />
@@ -73,7 +73,7 @@ const App = () => {
         </ul>
       </aside>
 
-      <main className="flex-1 bg-gray-100">
+      <main className="flex-1 bg-gray-200">
         <header className="bg-gradient-to-r from-blue-500 to-teal-400 text-white p-6 shadow-md">
           <h1 className="text-2xl font-bold">Vehicle Manager</h1>
         </header>
@@ -142,7 +142,7 @@ const App = () => {
                 <button
                   type="button"
                   onClick={handleAddVehicle}
-                  className="bg-gradient-to-r from-blue-500 to-teal-400 text-white px-6 py-2 rounded shadow-md hover:bg-blue-600 transition-transform hover:scale-105 focus:ring-2 focus:ring-teal-300"
+                  className="bg-[#5046e4] text-white px-6 py-2 rounded shadow-md hover:bg-blue-600 transition-transform hover:scale-105 focus:ring-2 focus:ring-teal-300"
                 >
                   Add Vehicle
                 </button>
