@@ -134,6 +134,8 @@ const App = () => {
                   value={vehicleInfo.year}
                   onChange={handleInputChange}
                   placeholder="Year of manufacture"
+                   min={2000}
+                  max={2026}
                   className="border border-gray-300 rounded w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                 />
               </div>
