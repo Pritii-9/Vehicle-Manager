@@ -3,7 +3,7 @@ import MenuItem from "./Components/MenuItem";
 import Card from "./Components/Card";
 
 const App = () => {
-  const [selectedMenu, setSelectedMenu] = useState(null); // Initially, no menu is selected
+  const [selectedMenu, setSelectedMenu] = useState(null); 
   const [menuData, setMenuData] = useState({
     menu1: [],
     menu2: [],
@@ -18,7 +18,6 @@ const App = () => {
     year: "",
     mileage: "",
     Vehiclenumber: "",
-   
   });
 
   const handleInputChange = (e) => {
@@ -61,8 +60,16 @@ const App = () => {
   };
 
   const handleAddVehicle = () => {
-    const { Vehiclenumber,OwnerName,VehicleName, VehicleType, capacity, FuelType, year, mileage } =
-      vehicleInfo;
+    const {
+      Vehiclenumber,
+      OwnerName,
+      VehicleName,
+      VehicleType,
+      capacity,
+      FuelType,
+      year,
+      mileage,
+    } = vehicleInfo;
 
     if (
       !Vehiclenumber ||
@@ -72,8 +79,7 @@ const App = () => {
       !capacity ||
       !FuelType ||
       !year ||
-      !mileage 
-      
+      !mileage
     ) {
       alert("Please fill out all fields before adding the vehicle.");
       return;
@@ -94,7 +100,6 @@ const App = () => {
       FuelType: "",
       year: "",
       mileage: "",
-      
     });
 
     alert("Vehicle added successfully!");
@@ -153,7 +158,6 @@ const App = () => {
             </div>
 
             <form className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-             
               <div>
                 <label className="block font-semibold mb-2 text-gray-600">
                   Vehicle Number
@@ -199,15 +203,18 @@ const App = () => {
                 <label className="block font-semibold mb-2 text-gray-600">
                   Vehicle Type
                 </label>
-                <input
-                  type="text"
+                <select
                   name="VehicleType"
                   value={vehicleInfo.VehicleType}
                   onChange={handleInputChange}
-                  placeholder="Vehicle Type"
                   required
                   className="border border-gray-300 rounded w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-                />
+                >
+                  <option value="">Select Vehicle Type</option>
+                  <option value="Car">Car</option>
+                  <option value="Bike">Bike</option>
+                  <option value="Truck">Truck</option>
+                </select>
               </div>
               <div>
                 <label className="block font-semibold mb-2 text-gray-600">
@@ -222,7 +229,7 @@ const App = () => {
                   className="border border-gray-300 rounded w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                 />
               </div>
-             
+
               <div>
                 <label className="block font-semibold mb-2 text-gray-600">
                   Fuel-Type
@@ -285,17 +292,26 @@ const App = () => {
           </div>
         )}
 
-{!showFilteredVehicles && selectedMenu !== "menu1" && selectedMenu && menuData[selectedMenu]?.length > 0 && (
-    <section className="p-6 grid gap-6 lg:grid-cols-2 md:grid-cols-1">
-      <Card vehicles={menuData[selectedMenu]} VehicleType={selectedMenu} />
-    </section>
-  )}
-  {showFilteredVehicles && filteredVehicles.length > 0 && (
-    <section className="p-6 grid gap-6 lg:grid-cols-2 md:grid-cols-1">
-      <Card vehicles={filteredVehicles} VehicleType={filteredVehicles[0]?.VehicleType} />
-    </section>
-  )}
-</main>
+        {!showFilteredVehicles &&
+          selectedMenu !== "menu1" &&
+          selectedMenu &&
+          menuData[selectedMenu]?.length > 0 && (
+            <section className="p-6 grid gap-6 lg:grid-cols-2 md:grid-cols-1">
+              <Card
+                vehicles={menuData[selectedMenu]}
+                VehicleType={selectedMenu}
+              />
+            </section>
+          )}
+        {showFilteredVehicles && filteredVehicles.length > 0 && (
+          <section className="p-6 grid gap-6 lg:grid-cols-2 md:grid-cols-1">
+            <Card
+              vehicles={filteredVehicles}
+              VehicleType={filteredVehicles[0]?.VehicleType}
+            />
+          </section>
+        )}
+      </main>
     </div>
   );
 };
